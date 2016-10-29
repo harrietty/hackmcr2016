@@ -19,6 +19,21 @@ const basicBoard = [
   ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
 ];
 
+gamesRouter.get('/available', (req, res, next) => {
+  Game.find({playerB: undefined}, (err, games) => {
+    if (err) return next(err);
+    res.status(200).json(games);
+  });
+});
+
+gamesRouter.get('/:id', (req, res, next) => {
+  const gameId = req.params.id;
+  Game.findById(gameId, (err, game) => {
+    if (err) return next(err);
+    res.status(200).json(game);
+  });
+});
+
 gamesRouter.post('/new', (req, res, next) => {
   // create new game and insert into db
   const playerA = req.body.player;
@@ -43,7 +58,7 @@ gamesRouter.post('/new', (req, res, next) => {
       });
     })
     .then(() => {
-      res.status(201).json(game);
+      res.status(201).json(newGame);
     })
     .catch(err => {
       return next(err);
@@ -76,8 +91,8 @@ gamesRouter.post('/update', (req, res, next) => {
   });
 });
 
-gamesRouter.post('/end', (req, res, next) => {
-  const gameId = req.body.gameId;
+gamesRouter.delete('/:id', (req, res, next) => {
+  const gameId = req.params.id;
   let players;
   return Game.findById(gameId)
     .then(game => {

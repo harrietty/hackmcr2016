@@ -14,6 +14,11 @@
   <p>
     Returns specified user
   </p>
+  <h3>PUT /api/users/:username</h3>
+  <p>
+    Send <b>req.body.user</b> as any user properties you want to change. <br />
+    Returns the updated user.
+  </p>
   <h3>POST /api/games/new</h3>
   <p>
     Send <b>req.body.player</b><br />
@@ -29,11 +34,18 @@
     Send <b>req.body.game</b> and <b>req.body.gameId</b><br />
     Updates the specified game and returns it
   </p>
-  <h3>POST /api/games/end</h3>
+  <h3>DELETE /api/games/:id</h3>
   <p>
-    Send <b>req.body.gameId</b>
-    <br />
     Deletes the specified game and also removes it from the profiles of the players.
   </p>
+  <h3>GET /api/games/available</h3>
+  <p>
+    Gets a list of all games waiting for another player.
+  </p>
+  <h3>GET /api/games/:id</h3>
+  <p>
+    Gets a specific game by id
+  </p>
+
   </body>
 </html>

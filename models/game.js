@@ -8,6 +8,7 @@ const GameSchema = new Schema({
     type: String,
     default: 'playerA'
   },
+  turnsTaken: 0,
   orders: Array,
   score: {
     type: Number,

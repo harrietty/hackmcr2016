@@ -13,6 +13,12 @@ usersRouter.get('/:username', (req, res, next) => {
   });
 });
 
+usersRouter.put('/:username', (req, res, next) => {
+  User.findOneAndUpdate({username: req.params.username}, req.body.user, {new: true}, (err, user) => {
+    res.status(200).json(user);
+  });
+});
+
 usersRouter.post('/:username', (req, res) => {
   const newUser = {
     username: req.params.username

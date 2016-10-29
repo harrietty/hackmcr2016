@@ -6,7 +6,12 @@ const UserSchema = new Schema({
     type: String,
     isRequired: true
   },
-  gameId: String
+  gameId: String,
+  interested: Boolean,
+  message: String,
+  name: String,
+  age: String,
+  from: String
 });
 
 module.exports = mongoose.model('User', UserSchema);
