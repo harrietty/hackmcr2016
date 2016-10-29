@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <body>
+  <h3>POST /api/users/:username</h3>
+  <p>
+    Creates a new user and returns it
+  </p>
+
+  <h3>GET /api/users/:username</h3>
+  <p>
+    Returns specified user
+  </p>
+  <h3>POST /api/games/new</h3>
+  <p>
+    Send <b>req.body.player</b><br />
+    Creates a new user and returns it.
+  </p>
+  <h3>POST /api/games/join</h3>
+  <p>
+    Send <b>req.body.playerB</b> and <b>req.body.gameId</b><br />
+    Joins playerB to the specified game
+  </p>
+  <h3>POST api/games/update</h3>
+  <p>
+    Send <b>req.body.game</b> and <b>req.body.gameId</b><br />
+    Updates the specified game and returns it
+  </p>
+  <h3>POST /api/games/end</h3>
+  <p>
+    Send <b>req.body.gameId</b>
+    <br />
+    Deletes the specified game and also removes it from the profiles of the players.
+  </p>
+  </body>
+</html>

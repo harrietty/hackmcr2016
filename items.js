@@ -1,0 +1,22 @@
+module.exports = [
+  'bananas',
+  'pineapple',
+  'cat food',
+  'oven chips',
+  'tofu',
+  'cucumber',
+  'peppers',
+  'potatoes',
+  'broccoli',
+  'cereal',
+  'matches',
+  'aubergine',
+  'avocado',
+  'breadsticks',
+  'hummus',
+  'carrots',
+  'apples',
+  'crisps',
+  'margerine',
+  'pasta'
+];
