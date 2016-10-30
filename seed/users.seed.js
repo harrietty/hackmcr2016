@@ -11,19 +11,27 @@ mongoose.connect(DB, () => {
 const users = [
   {
     username: 'harriet',
-    name: 'Harriet Ryder'
+    name: 'Harriet Ryder',
+    interests: 'Yoga, Knitting, Coding',
+    age: 25
   },
   {
     username: 'mauro',
-    name: 'Mauro Gestoso'
+    name: 'Mauro Gestoso',
+    interests: 'Cycling, Sci-Fi, Coding',
+    age: 27
   },
   {
     username: 'drew',
-    name: 'Andrews Frempong'
+    name: 'Andrews Frempong',
+    interests: 'Ping Pong, Dancing, Coding',
+    age: 27
   },
   {
     username: 'chris',
-    name: 'Chris Heald'
+    name: 'Chris Heald',
+    interests: 'Beer, Baking, Coding',
+    age: 27
   }
 ];
 

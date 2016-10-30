@@ -7,8 +7,7 @@ const UserSchema = new Schema({
     isRequired: true
   },
   gameId: String,
-  interested: Boolean,
-  message: String,
+  interests: String,
   name: String,
   age: String,
   from: String,
