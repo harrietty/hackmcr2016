@@ -20,9 +20,7 @@ usersRouter.put('/:username', (req, res, next) => {
 });
 
 usersRouter.post('/:username', (req, res) => {
-  const newUser = {
-    username: req.params.username
-  };
+  const newUser = Object.assign({}, req.body, {username: req.params.username});
   const newUserDb = new User(newUser);
   newUserDb.save()
     .then(user => {

@@ -68,7 +68,7 @@ gamesRouter.post('/new', (req, res, next) => {
 gamesRouter.post('/join', (req, res, next) => {
   const playerB = req.body.playerB;
   const gameId = req.body.gameId;
-  let game;
+  let game = {};
   // Update the game object
   return Game.findById(gameId)
     .then((gameDoc) => {
