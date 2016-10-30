@@ -112,7 +112,7 @@ gamesRouter.delete('/:id', (req, res, next) => {
       return User.findOne({username: players.playerA});
     })
     .then(playerA => {
-      delete playerA.gameId;
+      playerA.gameId = undefined;
       if (playerA.friends.indexOf(players.playerB) === -1) {
         playerA.friends.push(players.playerB);
       }
@@ -122,7 +122,7 @@ gamesRouter.delete('/:id', (req, res, next) => {
       return User.findOne({username: players.playerB});
     })
     .then(playerB => {
-      delete playerB.gameId;
+      playerB.gameId = undefined;
       if (playerB.friends.indexOf(players.playerA) === -1) {
         playerB.friends.push(players.playerA);
       }
