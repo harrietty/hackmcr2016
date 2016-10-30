@@ -100,14 +100,24 @@ gamesRouter.delete('/:id', (req, res, next) => {
         playerA: game.playerA,
         playerB: game.playerB
       };
-      return User.findOneAndUpdate({username: players.playerA}, {
-        gameId: undefined
-      });
+      return User.findOne({username: players.playerA});
+    })
+    .then(playerA => {
+      delete playerA.gameId;
+      if (playerA.friends.indexOf(players.playerB) === -1) {
+        playerA.friends.push(players.playerB);
+      }
+      return playerA.save();
     })
     .then(() => {
-      return User.findOneAndUpdate({username: players.playerB}, {
-        gameId: undefined
-      });
+      return User.findOne({username: players.playerB});
+    })
+    .then(playerB => {
+      delete playerB.gameId;
+      if (playerB.friends.indexOf(players.playerA) === -1) {
+        playerB.friends.push(players.playerA);
+      }
+      return playerB.save();
     })
     .then(() => {
       // delete the game
@@ -117,6 +127,7 @@ gamesRouter.delete('/:id', (req, res, next) => {
       res.status(200).send('Successfully deleted');
     })
     .catch(err => {
+      console.log(err.message);
       return next(err);
     });
 });

@@ -11,7 +11,8 @@ const UserSchema = new Schema({
   message: String,
   name: String,
   age: String,
-  from: String
+  from: String,
+  friends: Array
 });
 
 module.exports = mongoose.model('User', UserSchema);
