@@ -1,5 +1,6 @@
 const Router = require('express').Router;
 const gamesRouter = Router();
+const _ = require('underscore');
 const Game = require('../models/game');
 const User = require('../models/user');
 const generateOrders = require('../helpers/orders').generateOrders;
@@ -102,33 +103,51 @@ gamesRouter.post('/update', (req, res, next) => {
 
 gamesRouter.delete('/:id', (req, res, next) => {
   const gameId = req.params.id;
-  let players;
+  let usernames;
+  let players = {};
   return Game.findById(gameId)
     .then(game => {
-      players = {
-        playerA: game.playerA,
-        playerB: game.playerB
+      console.log('******1')
+      usernames = {
+        A: game.playerA,
+        B: game.playerB
       };
-      return User.findOne({username: players.playerA});
+      return User.findOne({username: usernames.A});
     })
     .then(playerA => {
-      playerA.gameId = undefined;
-      if (playerA.friends.indexOf(players.playerB) === -1) {
-        playerA.friends.push(players.playerB);
-      }
-      return playerA.save();
-    })
-    .then(() => {
-      return User.findOne({username: players.playerB});
+      console.log('******2')
+      players.A = playerA;
+      return User.findOne({username: usernames.B});
     })
     .then(playerB => {
-      playerB.gameId = undefined;
-      if (playerB.friends.indexOf(players.playerA) === -1) {
-        playerB.friends.push(players.playerA);
+      console.log('******3')
+      players.B = playerB;
+      players.B.gameId = undefined;
+      if (!_.findWhere(players.B.friends, {username: usernames.A})) {
+        players.B.friends.push({
+          name: players.A.name,
+          username: players.A.username,
+          interests: players.A.interests,
+          age: players.A.age
+        });
       }
-      return playerB.save();
+      return players.B.save();
     })
     .then(() => {
+      console.log('******4')
+      players.A.gameId = undefined;
+      if (!_.findWhere(players.A.friends, {username: usernames.B})) {
+        players.A.friends.push({
+          name: players.B.name,
+          username: players.B.username,
+          interests: players.B.interests,
+          age: players.B.age
+        });
+      }
+      return players.A.save();
+    })
+    .then(() => {
+      console.log('******5')
       // delete the game
       return Game.findByIdAndRemove(gameId);
     })

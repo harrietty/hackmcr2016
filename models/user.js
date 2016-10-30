@@ -12,7 +12,10 @@ const UserSchema = new Schema({
   name: String,
   age: String,
   from: String,
-  friends: Array
+  friends: {
+    type: Array,
+    default: []
+  }
 });
 
 module.exports = mongoose.model('User', UserSchema);
