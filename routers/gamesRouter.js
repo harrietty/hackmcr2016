@@ -7,7 +7,7 @@ const generateBoard = require('../helpers/board');
 const items = require('../items');
 
 const basicBoard = [
-  ['playerA', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'playerB'],
+  ['currentPlayer', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'otherPlayer'],
   ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
   ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
   ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
@@ -92,8 +92,10 @@ gamesRouter.post('/update', (req, res, next) => {
   // update the game with the given id
   const gameId = req.body.gameId;
   const game = req.body.game;
-  Game.findByIdAndUpdate(gameId, game, (err, data) => {
+  console.log(gameId, game);
+  Game.findByIdAndUpdate(gameId, game, {new: true}, (err, data) => {
     if (err) return next(err);
+    console.log('NEW DATA' ,data);
     res.status(200).json(data);
   });
 });
