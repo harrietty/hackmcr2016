@@ -7,16 +7,16 @@ const generateBoard = require('../helpers/board');
 const items = require('../items');
 
 const basicBoard = [
+  ['playerA', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'playerB'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
   ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-  ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
+  ['empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty', 'shelf', 'shelf', 'empty'],
   ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-  ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
-  ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-  ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
-  ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-  ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
-  ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-  ['empty', 'empty', 'shelf', 'shelf', 'empty', 'empty', 'shelf', 'shelf', 'empty', 'empty'],
+  ['empty', 'empty', 'empty', 'empty', 'goal', 'goal', 'empty', 'empty', 'empty', 'empty'],
 ];
 
 gamesRouter.get('/available', (req, res, next) => {
